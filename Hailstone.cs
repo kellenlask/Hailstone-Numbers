@@ -1,17 +1,18 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 public class MainClass {
   // Define
-  public static int[] Hailstone(int n) 
+  public static IEnumerable<int> Hailstone(int n) 
   {
     if(n == 1) {
       return new [] {1};
     }
 
     return n % 2 == 0
-             ? new [] {n}.Concat(Hailstone(n / 2)).ToArray()
-             : new [] {n}.Concat(Hailstone(3 * n + 1)).ToArray();
+             ? new [] {n}.Concat(Hailstone(n / 2))
+             : new [] {n}.Concat(Hailstone(3 * n + 1));
   }
 
   // Test
